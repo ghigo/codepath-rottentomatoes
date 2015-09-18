@@ -14,6 +14,7 @@
 		FEC5CB841BAB8BE300EDCFBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC5CB821BAB8BE300EDCFBD /* LaunchScreen.storyboard */; };
 		FEC5CB8C1BAB8D2000EDCFBD /* listViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC5CB8B1BAB8D2000EDCFBD /* listViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		FEC5CB8E1BAB937000EDCFBD /* movieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC5CB8D1BAB937000EDCFBD /* movieTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		FEC5CB951BABA74B00EDCFBD /* detailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC5CB941BABA74B00EDCFBD /* detailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		FEC5CB8B1BAB8D2000EDCFBD /* listViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = listViewController.swift; path = ../listViewController.swift; sourceTree = "<group>"; };
 		FEC5CB8D1BAB937000EDCFBD /* movieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movieTableViewCell.swift; sourceTree = "<group>"; };
 		FEC5CB8F1BAB9F1100EDCFBD /* rotten-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rotten-Bridging-Header.h"; sourceTree = "<group>"; };
+		FEC5CB941BABA74B00EDCFBD /* detailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				FEC5CB8B1BAB8D2000EDCFBD /* listViewController.swift */,
+				FEC5CB941BABA74B00EDCFBD /* detailsViewController.swift */,
 				FEC5CB791BAB8BE300EDCFBD /* AppDelegate.swift */,
 				FEC5CB7D1BAB8BE300EDCFBD /* Main.storyboard */,
 				FEC5CB8F1BAB9F1100EDCFBD /* rotten-Bridging-Header.h */,
@@ -201,6 +204,7 @@
 				FEC5CB8C1BAB8D2000EDCFBD /* listViewController.swift in Sources */,
 				FEC5CB8E1BAB937000EDCFBD /* movieTableViewCell.swift in Sources */,
 				FEC5CB7A1BAB8BE300EDCFBD /* AppDelegate.swift in Sources */,
+				FEC5CB951BABA74B00EDCFBD /* detailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

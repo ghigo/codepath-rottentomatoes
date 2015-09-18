@@ -66,18 +66,11 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let photo = photoDictionary![indexPath.row] as! NSDictionary
-//        let photoImage = photo.valueForKeyPath("images.low_resolution.url") as! String
-//        let imageUrl = NSURL(string: photoImage)
-//        let cell = photoTableView.dequeueReusableCellWithIdentifier("photoGrid", forIndexPath: indexPath) as! PhotoTableViewCell
-//        cell.photoImageView.setImageWithURL(imageUrl!)
-//        return cell
-    
         let movieObj = movieList![indexPath.row] as! NSDictionary
         var urlString = movieObj.valueForKeyPath("posters.thumbnail") as! String
 
-        
-        var range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
+//        Edit url for higher res images
+        let range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
         if let range = range {
             urlString = urlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
@@ -85,13 +78,21 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = movieTableView.dequeueReusableCellWithIdentifier("rotten.listTableCell", forIndexPath: indexPath) as! movieTableViewCell
         cell.movieImageView.setImageWithURL(imageUrl!)
-//        cell.movieImageView.setImage
-        
-        
-//                let cell = photoTableView.dequeueReusableCellWithIdentifier("rotten.listTableCell", forIndexPath: indexPath) as! PhotoTableViewCell
+
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        movieTableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc = segue.destinationViewController as! detailsViewController
+        let indexPath = movieTableView.indexPathForCell(sender as! UITableViewCell)
+        vc.selectedMovie = movieList![(indexPath?.row)!] as? NSDictionary
+    }
 
+    
 }
 
 

@@ -17,21 +17,22 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rotten.listTableCell" rowHeight="470" id="qpP-V6-bZn" customClass="movieTableViewCell" customModule="rotten_tomatoes" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="rotten.listTableCell" rowHeight="470" id="qpP-V6-bZn" customClass="movieTableViewCell" customModule="rotten_tomatoes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="470"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpP-V6-bZn" id="D8j-yj-VxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="469.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="469.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BTj-gx-JCC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="469.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="287" height="469.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="movieImageView" destination="BTj-gx-JCC" id="25f-NW-Gug"/>
+                                            <segue destination="dVh-FX-bA6" kind="push" id="Xke-de-Pwu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -47,6 +48,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="510"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="rbc-qs-6lr">
+            <objects>
+                <viewController id="dVh-FX-bA6" customClass="detailsViewController" customModule="rotten_tomatoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceU-WO-MrH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cfT-EZ-IOk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="JDQ-AJ-Ol4">
+                                <rect key="frame" x="0.0" y="348" width="320" height="220"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F9U-6J-frb">
+                                        <rect key="frame" x="8" y="8" width="304" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yIl-4h-dCo">
+                                        <rect key="frame" x="8" y="45" width="304" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="synopsis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nXf-8B-q39">
+                                        <rect key="frame" x="8" y="74" width="304" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="avK-b3-9m1"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="cfT-EZ-IOk" id="iw9-ML-XlE"/>
+                        <outlet property="detailsLabel" destination="yIl-4h-dCo" id="jA1-o3-Z45"/>
+                        <outlet property="synopsisLabel" destination="nXf-8B-q39" id="c15-eP-YMe"/>
+                        <outlet property="titleLabel" destination="F9U-6J-frb" id="4yC-VQ-O4z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCf-qe-AQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286" y="510"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YeD-0A-zla">
