@@ -66,17 +66,26 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let movieObj = movieList![indexPath.row] as! NSDictionary
         var urlString = movieObj.valueForKeyPath("posters.thumbnail") as! String
+        let thumbnailUrl = NSURL(string: urlString)
+        let thumbnailRequest = NSURLRequest(URL: thumbnailUrl!)
 
 //        Edit url for higher res images
         let range = urlString.rangeOfString(".*cloudfront.net/", options: .RegularExpressionSearch)
         if let range = range {
             urlString = urlString.stringByReplacingCharactersInRange(range, withString: "https://content6.flixster.com/")
         }
-        let imageUrl = NSURL(string: urlString)
+        let largeImageUrl = NSURL(string: urlString)
         
         let cell = movieTableView.dequeueReusableCellWithIdentifier("rotten.listTableCell", forIndexPath: indexPath) as! movieTableViewCell
-//        cell.movieImageView.setImageWithURLRequest(imageUrl!, placeholderImage: moviePlaceholder, success: <#T##((NSURLRequest, NSHTTPURLResponse, UIImage) -> Void)?##((NSURLRequest, NSHTTPURLResponse, UIImage) -> Void)?##(NSURLRequest, NSHTTPURLResponse, UIImage) -> Void#>, failure: <#T##((NSURLRequest, NSHTTPURLResponse, NSError) -> Void)?##((NSURLRequest, NSHTTPURLResponse, NSError) -> Void)?##(NSURLRequest, NSHTTPURLResponse, NSError) -> Void#>)
-        cell.movieImageView.setImageWithURL(imageUrl!, placeholderImage: moviePlaceholder)
+        
+        func onThumbnailLoaded(request: NSURLRequest, response: NSHTTPURLResponse, movieImage: UIImage) {
+//            Set tumbnail
+            cell.movieImageView.image = movieImage
+//            Load large image
+            cell.movieImageView.setImageWithURL(largeImageUrl!)
+        }
+//        Load thumbnail
+        cell.movieImageView.setImageWithURLRequest(thumbnailRequest, placeholderImage: moviePlaceholder, success: onThumbnailLoaded, failure: nil)
 
         return cell
     }
