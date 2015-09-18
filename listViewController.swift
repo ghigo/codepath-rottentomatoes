@@ -13,6 +13,7 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var movieList: NSArray? // List of movies from API
     let loader = JGProgressHUD(style: JGProgressHUDStyle.Dark)
     let refreshControl = UIRefreshControl()
+    let moviePlaceholder = UIImage(named: "moviePlaceholder")
     
     @IBOutlet weak var movieTableView: UITableView!
     
@@ -74,7 +75,8 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let imageUrl = NSURL(string: urlString)
         
         let cell = movieTableView.dequeueReusableCellWithIdentifier("rotten.listTableCell", forIndexPath: indexPath) as! movieTableViewCell
-        cell.movieImageView.setImageWithURL(imageUrl!)
+//        cell.movieImageView.setImageWithURLRequest(imageUrl!, placeholderImage: moviePlaceholder, success: <#T##((NSURLRequest, NSHTTPURLResponse, UIImage) -> Void)?##((NSURLRequest, NSHTTPURLResponse, UIImage) -> Void)?##(NSURLRequest, NSHTTPURLResponse, UIImage) -> Void#>, failure: <#T##((NSURLRequest, NSHTTPURLResponse, NSError) -> Void)?##((NSURLRequest, NSHTTPURLResponse, NSError) -> Void)?##(NSURLRequest, NSHTTPURLResponse, NSError) -> Void#>)
+        cell.movieImageView.setImageWithURL(imageUrl!, placeholderImage: moviePlaceholder)
 
         return cell
     }
