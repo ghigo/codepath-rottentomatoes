@@ -16,6 +16,7 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let moviePlaceholder = UIImage(named: "moviePlaceholder")
     
     @IBOutlet weak var movieTableView: UITableView!
+    @IBOutlet weak var networkView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +104,7 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func refresh() {
 //        Show loader
         self.loader.showInView(movieTableView)
+        self.networkView.hidden = true
         
         let url = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json")!
         let request = NSURLRequest(URL: url)
@@ -111,12 +113,13 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions(rawValue: 0)) as! NSDictionary
                 self.movieList = responseDictionary["movies"] as? NSArray
                 self.movieTableView.reloadData()
-                self.loader.dismiss()
             } else {
+                self.networkView.hidden = false
                 if let e = error {
                     NSLog("Error: \(e)")
                 }
             }
+            self.loader.dismiss()
             self.refreshControl.endRefreshing()
         }
     }
