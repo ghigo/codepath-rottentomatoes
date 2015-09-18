@@ -17,6 +17,10 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let loader = JGProgressHUD(style: JGProgressHUDStyle.Dark)
+        loader.textLabel.text = "loading movies"
+        loader.showInView(movieTableView)
+        
         movieTableView.dataSource = self
         movieTableView.delegate = self
 
@@ -29,6 +33,7 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions(rawValue: 0)) as! NSDictionary
                 self.movieList = responseDictionary["movies"] as? NSArray
                 self.movieTableView.reloadData()
+                loader.dismiss()
 //                self.refreshControl.endRefreshing()
             } else {
                 if let e = error {

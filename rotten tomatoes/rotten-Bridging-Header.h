@@ -13,3 +13,9 @@
 #endif /* rotten_Bridging_Header_h */
 
 #import "UIImageView+AFNetworking.h"
+
+#if JGProgressHUD_Framework
+#import <JGProgressHUD/JGProgressHUD.h>
+#else
+#import "JGProgressHUD.h"
+#endif
