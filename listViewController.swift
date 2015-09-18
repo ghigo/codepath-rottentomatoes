@@ -11,36 +11,28 @@ import UIKit
 class listViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var movieList: NSArray? // List of movies from API
+    let loader = JGProgressHUD(style: JGProgressHUDStyle.Dark)
+    let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var movieTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loader = JGProgressHUD(style: JGProgressHUDStyle.Dark)
-        loader.textLabel.text = "loading movies"
-        loader.showInView(movieTableView)
+        loader.textLabel.text = "loading"
         
+//        Setup refresh
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        movieTableView.insertSubview(refreshControl, atIndex: 0)
+        
+//        Setup delegate and dataSource
         movieTableView.dataSource = self
         movieTableView.delegate = self
+        
 
 
 //        Load images
-        let url = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json")!
-        let request = NSURLRequest(URL: url)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
-            if let d = data {
-                let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions(rawValue: 0)) as! NSDictionary
-                self.movieList = responseDictionary["movies"] as? NSArray
-                self.movieTableView.reloadData()
-                loader.dismiss()
-//                self.refreshControl.endRefreshing()
-            } else {
-                if let e = error {
-                    NSLog("Error: \(e)")
-                }
-            }
-        }
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,6 +87,27 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let vc = segue.destinationViewController as! detailsViewController
         let indexPath = movieTableView.indexPathForCell(sender as! UITableViewCell)
         vc.selectedMovie = movieList![(indexPath?.row)!] as? NSDictionary
+    }
+    
+    func refresh() {
+//        Show loader
+        self.loader.showInView(movieTableView)
+        
+        let url = NSURL(string: "https://gist.githubusercontent.com/timothy1ee/e41513a57049e21bc6cf/raw/b490e79be2d21818f28614ec933d5d8f467f0a66/gistfile1.json")!
+        let request = NSURLRequest(URL: url)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
+            if let d = data {
+                let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions(rawValue: 0)) as! NSDictionary
+                self.movieList = responseDictionary["movies"] as? NSArray
+                self.movieTableView.reloadData()
+                self.loader.dismiss()
+            } else {
+                if let e = error {
+                    NSLog("Error: \(e)")
+                }
+            }
+            self.refreshControl.endRefreshing()
+        }
     }
 
     
