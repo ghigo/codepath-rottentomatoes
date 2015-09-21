@@ -88,6 +88,9 @@ class listViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        Load thumbnail
         cell.movieImageView.setImageWithURLRequest(thumbnailRequest, placeholderImage: moviePlaceholder, success: onThumbnailLoaded, failure: nil)
 
+//        Remove side arrow from cell
+        cell.accessoryType = UITableViewCellAccessoryType.None
+        
         return cell
     }
     
