@@ -18,6 +18,10 @@ class detailsViewController: UIViewController {
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var synopsisLabel: UILabel!
     
+    override func viewDidAppear(animated: Bool) {
+        self.title = selectedMovie?.valueForKeyPath("title") as! String
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
