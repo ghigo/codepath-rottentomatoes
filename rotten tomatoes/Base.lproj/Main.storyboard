@@ -17,15 +17,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="rotten.listTableCell" rowHeight="470" id="qpP-V6-bZn" customClass="movieTableViewCell" customModule="rotten_tomatoes" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rotten.listTableCell" rowHeight="470" id="qpP-V6-bZn" customClass="movieTableViewCell" customModule="rotten_tomatoes" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="470"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qpP-V6-bZn" id="D8j-yj-VxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="469.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="469.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="BTj-gx-JCC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="287" height="469.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="469.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
